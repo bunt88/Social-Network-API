@@ -23,7 +23,7 @@ const userController = {
             });
     },
 
-    getUserByID({ params }, res) {
+    getUserById({ params }, res) {
         User.findOne({_id: params.id })
             .populate({
                 path: 'thoughts',
@@ -34,7 +34,7 @@ const userController = {
                 select: '-__v'
             })
             .select(-__v)
-            .then(dvUserData => {
+            .then(dbUserData => {
                 if(!dbUserData) {
                     res.status(404).json({ message: 'No User Found with this ID!'});
                     return;
@@ -76,12 +76,12 @@ const userController = {
             select: ('-__v')
         })
         .select('-__v')
-        .then(dbUSerData => {
+        .then(dbUserData => {
             if (!dbUserData) {
                 res.status(404).json({ message: 'No User Found with this ID!'});
                 return;
             }
-            res.json(dbUSerData);
+            res.json(dbUserData);
         }) 
         .catch(err => res.json(err));
 
