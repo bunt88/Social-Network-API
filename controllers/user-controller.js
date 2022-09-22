@@ -33,7 +33,7 @@ const userController = {
                 path: 'friends',
                 select: '-__v'
             })
-            .select(-__v)
+            .select('-__v')
             .then(dbUserData => {
                 if(!dbUserData) {
                     res.status(404).json({ message: 'No User Found with this ID!'});
@@ -92,7 +92,7 @@ const userController = {
             .then(dbUserData => {
                 if(!dbUserData) {
                     res.status(404).json({ message: 'No User Foundwith this ID!'});
-                    return;
+                    return({message: 'User and associated thoughts deleted'});
                 }
                 res.json(dbUserData);
             })

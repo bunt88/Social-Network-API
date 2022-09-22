@@ -25,6 +25,11 @@ thoughtRouter
     .post(createThought);
 
     thoughtRouter  
+    .route('/:thoughtId/reactions')
+    .post(addReaction);
+
+
+    thoughtRouter  
     .route('/:thoughtId/reactions/:reactionId')
     .delete(deleteReaction);
 
